@@ -1,0 +1,62 @@
+{
+  "python": "3.13.5",
+  "arithmetic": "exact integer/rational, exact SymPy real-root counts",
+  "permutations": {
+    "n_range": [
+      1,
+      8
+    ],
+    "total_permutations": 46233,
+    "file": "permutation_counts.json"
+  },
+  "kernel": {
+    "k_range": [
+      2,
+      24
+    ],
+    "y_rule": "p/2 for 1<=p<=4k",
+    "triples": [
+      [
+        3,
+        4,
+        5
+      ],
+      [
+        5,
+        12,
+        13
+      ],
+      [
+        7,
+        24,
+        25
+      ],
+      [
+        20,
+        21,
+        29
+      ]
+    ],
+    "zero_cases": 92,
+    "two_step_identity_cases": 4784,
+    "file": "kernel_exact.jsonl.gz",
+    "rows": 4784,
+    "uncompressed_sha256": "915ce8ee4f10a9b704018b7fec18ebe563e887d70ac5e40b704c352a6bf779da"
+  },
+  "polynomials": {
+    "maximum": 18,
+    "nonempty": 4180,
+    "conjecture_6_6_cases": 4163,
+    "singleton_cases": 17,
+    "exact_moment_and_sign_tests": 27663,
+    "transform_identity_cases": 4180,
+    "exact_transform_root_counts": 4180,
+    "exact_last_root_counts": 4180,
+    "positive_derivative_checks": 4180,
+    "sympy": "1.14.0",
+    "file": "polynomials_exact.jsonl.gz",
+    "rows": 4180,
+    "uncompressed_sha256": "0e4e77580492cca9d8d6131b2f1ba7efa51eefa2b6bb89e6b43b98c2c7065640"
+  },
+  "failures": []
+}

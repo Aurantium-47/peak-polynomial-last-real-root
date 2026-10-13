@@ -1,0 +1,110 @@
+{
+  "algorithm": "SHA-256",
+  "files": [
+    {
+      "path": "PUBLIC_FILES.txt",
+      "bytes": 580,
+      "sha256": "b7e42084129dae69ec3193676d3b9d88620b5edddcd8aaa6b0f9515614d69c97"
+    },
+    {
+      "path": "README.md",
+      "bytes": 3398,
+      "sha256": "dbd0e4f9de86dfc9ae45bd2c416d61a250f67495b6f12d8dfa86e4d8f87768b5"
+    },
+    {
+      "path": "REFERENCES.md",
+      "bytes": 2189,
+      "sha256": "e8fd258b67aa8327138d726ed56781a9be33abf42a8aeea507bbeb7d7b85056c"
+    },
+    {
+      "path": "REPRODUCIBILITY.md",
+      "bytes": 4467,
+      "sha256": "e95fa3af661fd71a773f8a13777ea4b3e3f9b139a76a421ad3d9ef932a24e29f"
+    },
+    {
+      "path": "RIGHTS.md",
+      "bytes": 796,
+      "sha256": "fdeaf26c90a538b51b84eda184c6c9c397985ac557de89dd66f24cd385888089"
+    },
+    {
+      "path": "check_package.py",
+      "bytes": 1413,
+      "sha256": "4e131419ba25147e578456755b26271861f11b3e75e6c9cc882c8a931f39c761"
+    },
+    {
+      "path": "data/kernel_exact.jsonl.gz",
+      "bytes": 150955,
+      "sha256": "450149acc9c5bdbdb85a57969be1850ed1102dc978c3079987feb7e330245774"
+    },
+    {
+      "path": "data/permutation_counts.json",
+      "bytes": 4852,
+      "sha256": "6ccd3c49e33552df066d1d03d58bfc40eb36907b01ff94ca9a9449c399539692"
+    },
+    {
+      "path": "data/polynomials_exact.jsonl.gz",
+      "bytes": 283179,
+      "sha256": "ff7c1da3bf7676a556961289d616f4eab45bec2040201c979751df5f98c874f9"
+    },
+    {
+      "path": "data/summary.json",
+      "bytes": 1281,
+      "sha256": "8aa83f2b2e585724b1bbe0faa978cc1eabf143cf061e74427e1d42c90ef275d3"
+    },
+    {
+      "path": "proof.pdf",
+      "bytes": 370788,
+      "sha256": "c09b290cb597054732273d5c9fe66d247e5d028573fd822420c78906325f06f7"
+    },
+    {
+      "path": "proof.tex",
+      "bytes": 23908,
+      "sha256": "72d812235140a654c208e43aa3ccd43a5f9f379f53262218e6e4dff39b1b01ba"
+    },
+    {
+      "path": "requirements.txt",
+      "bytes": 14,
+      "sha256": "25f9f1fb1988b230147a1d3092d34e09c069eb7a6c6d6df46b3973b9f2d36efc"
+    },
+    {
+      "path": "verification/independent_small_results.json",
+      "bytes": 55682,
+      "sha256": "a20926d0256c8bf7b615e9b8be14047c965d1f7d23fbe253be79082f79998bab"
+    },
+    {
+      "path": "verification/limited_reproduction.json",
+      "bytes": 1833,
+      "sha256": "7a3f25377b9d1709cd60f832bbccf5b35bc7c70e0b5b996e083ed6d7d25dfe84"
+    },
+    {
+      "path": "verification/limited_run/kernel_exact.jsonl.gz",
+      "bytes": 13336,
+      "sha256": "26b06edbc51dfe66e227f151bab3e342707893d81d515b959ce73f3c830b4bea"
+    },
+    {
+      "path": "verification/limited_run/permutation_counts.json",
+      "bytes": 5240,
+      "sha256": "7492d432d60c1e8a1bc21c406123ab7298a6c64395384c063a81a4970ab9da05"
+    },
+    {
+      "path": "verification/limited_run/polynomials_exact.jsonl.gz",
+      "bytes": 3229,
+      "sha256": "a6e289aee8287a9b99de01e87f5142acfeb8b3aba43ce22fb9689d3f593dd8fe"
+    },
+    {
+      "path": "verification/limited_run/summary.json",
+      "bytes": 1322,
+      "sha256": "79f4daae132c1308b0f7998cb74ae846cf009d0b00d5de2ad2f9b23ff172512c"
+    },
+    {
+      "path": "verify_independent_small.py",
+      "bytes": 5143,
+      "sha256": "0c6c470a62576bf7caf4da67fa5b9668b952e8ce3ee24a4981440ce4862c1651"
+    },
+    {
+      "path": "verify_peak.py",
+      "bytes": 11021,
+      "sha256": "9f1f42490a415e1130870d2fdef0da7f41bb563624b8db74da906460aef3d4de"
+    }
+  ]
+}

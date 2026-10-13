@@ -1,0 +1,44 @@
+{
+  "description": "Recorded limited exact checks; packaging did not rerun mathematical programs. Large historical scans remain separately identified in data/summary.json.",
+  "recorded_environment": {
+    "python": "3.8.3",
+    "sympy": "1.6.1"
+  },
+  "independent_implementation": {
+    "command": "python verify_independent_small.py",
+    "exit_code": 0,
+    "statistics": {
+      "transform_identity_points": 835,
+      "rational_sign_moment_points": 880,
+      "nonempty_sets": 88,
+      "original_target_sets": 79,
+      "permutations": 46233,
+      "kernel_points": 432,
+      "kernel_zero_points": 18
+    },
+    "result_file": "verification/independent_small_results.json",
+    "executed_source_sha256": "b5da6d8e78ed3a8092005d3b5353d692829d400fbf175e2893431724a72d465c",
+    "distributed_source_sha256": "0c6c470a62576bf7caf4da67fa5b9668b952e8ce3ee24a4981440ce4862c1651",
+    "source_change": "Only module docstring; the entire mathematical body is byte-identical"
+  },
+  "accompanying_verifier_small_run": {
+    "command": "python verify_peak.py --max 10 --kernel-max 10 --output reproduced_small",
+    "exit_code": 0,
+    "source_sha256": "9f1f42490a415e1130870d2fdef0da7f41bb563624b8db74da906460aef3d4de",
+    "summary_file": "verification/limited_run/summary.json",
+    "nonempty_sets": 88,
+    "moment_and_sign_points": 582,
+    "kernel_points": 864
+  },
+  "comparison": {
+    "status": "PASS",
+    "matching_polynomial_records": 88,
+    "matching_kernel_records": 864,
+    "matching_independent_monomial_polynomials": 88,
+    "permutation_tables_identical": true
+  },
+  "full_max18_suite_rerun_for_this_edition": false,
+  "historical_4180_and_4784_records_independently_recomputed": false,
+  "formal_proof_assistant_verification": false,
+  "external_expert_review": false
+}

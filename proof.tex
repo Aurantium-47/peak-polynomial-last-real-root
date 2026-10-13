@@ -1,0 +1,374 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=1in]{geometry}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\Pk}{\mathcal P}
+\newcommand{\fall}[2]{#1^{\underline{#2}}}
+\newcommand{\sgn}{\operatorname{sgn}}
+\newcommand{\ind}{\mathbf 1}
+\newcommand{\R}{\mathbb R}
+\newcommand{\Q}{\mathbb Q}
+\title{The last real root of a peak polynomial}
+\author{Aurantium}
+\date{13 October 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+Let $S$ be a finite admissible peak set with at least two elements, largest element $m$, and second-largest element $a$. We give a self-contained integral proof that $p_S(x)<0$ for $a<x<m$ and $p_S(x)>0$ for $x>m$, with $p'_S(m)>0$. Hence $m$ is the unique real root in $(a,\infty)$, as asserted in Billey--Fahrbach--Talmage's Conjecture 6.6. Earlier coefficient results already imply several consequences used or reproved here, including the right-side sign, simplicity, and positive symmetric transform properties. The focus is the full interval $(a,m)$ and a uniform sign inequality for a symmetrized truncated binomial kernel. Finite computations are supplementary checks, not premises of the proof.
+\end{abstract}
+
+\section{Problem and conventions}
+For $\pi=\pi_1\cdots\pi_n\in\mathfrak S_n$, put
+\[
+ \operatorname{Peak}(\pi)=\{i:1<i<n,\ \pi_{i-1}<\pi_i>\pi_{i+1}\}.
+\]
+A finite set of positive integers is \emph{admissible} if it excludes $1$ and contains no consecutive integers. Write $\Pk_S(n)$ for the permutations with peak set exactly $S$. The peak polynomial $p_S\in\Q[x]$ is characterized by
+\[
+ |\Pk_S(n)|=2^{n-|S|-1}p_S(n)\qquad(n>\max S).
+\]
+The conventions are $p_\varnothing=1$ and $p_S=0$ for inadmissible $S$. For nonempty admissible $S$, its degree is $\max S-1$. All reasoning is in ordinary classical mathematics, for example ZFC.
+
+The target in \cite[Conjecture 6.6, PDF p.~19]{BFT} is
+\begin{equation}\label{eq:target}
+ \forall S\text{ admissible},\ |S|\ge2,\quad
+ \{x\in\R:x>a,\ p_S(x)=0\}=\{m\},
+ \qquad a=\max(S\setminus\{m\}),\quad m=\max S.
+\end{equation}
+There is no reconstruction ambiguity and no simplicity hypothesis. For auxiliary induction only, set $\max\varnothing=0$.
+
+\begin{theorem}[Stronger sign theorem]\label{thm:main}
+Let $T$ be an admissible set, possibly empty, and put $a=\max T$ when $T\ne\varnothing$, or $a=0$ otherwise. For any integer $k\ge2$, set $S=T\cup\{a+k\}$ and $m=a+k$. Then
+\[
+ \sgn p_S(x)=\sgn(x-m)\quad\text{for every real }x>a,
+ \qquad p'_S(m)>0.
+\]
+In particular \eqref{eq:target} holds. The auxiliary singleton extension states that a singleton peak polynomial has just one positive real root, namely its peak.
+\end{theorem}
+
+
+\paragraph{Relation to prior results.}
+Li's positive symmetric rising-binomial coefficient theorem
+\cite[Eq.~(2), Theorem~1.1]{Li} already implies the right-side positivity,
+the simple root at the largest peak, and negativity on the last unit interval.
+It also implies the positive symmetric transform properties and the strict
+complete-monotonicity consequence below. BFT's finite-difference identity
+\cite[Theorem~4.3]{BFT} supplies an earlier equivalent symmetry statement.
+We retain self-contained proofs of these facts and do not claim their first
+appearance. The remaining interval between the penultimate peak and that last
+unit interval requires the additional sign argument given here. No exhaustive
+priority claim is made for the complete root-exclusion result.
+
+\section{Elementary peak identities}
+We include the counting argument for the recurrence, to fix its normalization and its boundary value. These basic facts occur in \cite[Theorem 1.1 and Corollary 3.1]{BFT}; the rest of the proof will derive its required transform properties directly.
+
+\begin{lemma}\label{lem:rec}
+For nonempty admissible $S$ with $m=\max S$, write $T=S\setminus\{m\}$ and $U=T\cup\{m-1\}$. Then
+\begin{equation}\label{eq:rec}
+ p_S(x)=p_T(m-1)\binom{x}{m-1}-2p_T(x)-p_U(x),
+ \qquad p_S(m)=0.
+\end{equation}
+\end{lemma}
+\begin{proof}
+A permutation with no peaks decreases to its minimum and then increases. The elements to the left of the minimum can be chosen arbitrarily, giving $2^{n-1}$ such permutations of $[n]$.
+
+For $n\ge m$, choose $m-1$ labels, arrange them in a prefix with peak set $T$, and arrange the remaining labels in a peak-free suffix. In the concatenation, only positions $m-1$ and $m$ can add peaks. They cannot both be peaks. Thus the concatenations are the disjoint union of the permutations with peak sets $T$, $U$, and $S$ (with inadmissible sets contributing zero). At $n=m$ the last class is empty because the final position cannot be a peak.
+
+Induction on $m$ supplies the polynomials for $T$ and $U$, whose maxima are smaller. For $n>m$, dividing the counting identity by $2^{n-|S|-1}$ gives \eqref{eq:rec} at infinitely many integers, hence as a polynomial identity. The same counting identity at $n=m$ gives that its right side is zero there. This proves $p_S(m)=0$ without extrapolating the counting interpretation below its valid range. It also constructs the polynomial inductively. Its leading coefficient is $p_T(m-1)/(m-1)!>0$: $T$ is admissible for length $m-1$, and the subtracted polynomials have lower degree. Therefore its degree is $m-1$.
+\end{proof}
+
+For $T,a,k$ as in Theorem~\ref{thm:main}, put $f=p_T$, $m=a+k$, and $g=p_{T\cup\{m\}}$. Iterating \eqref{eq:rec} from the inadmissible set $T\cup\{a+1\}$ gives
+\begin{equation}\label{eq:unroll}
+ g(x)=-2\ind_{k\text{ even}}f(x)
+       +\sum_{i=1}^{k-1}(-1)^{k-1-i}f(a+i)\binom{x}{a+i}.
+\end{equation}
+For $T=\varnothing$, the initial inadmissible set is $\{1\}$, so this formula also covers singletons. Evaluation of the same recurrence gives
+\begin{equation}\label{eq:values}
+ g(j)=
+ \begin{cases}
+  -(1+(-1)^k)f(j),&0\le j\le a,\\
+  -f(j),&a<j<m,\\
+  0,&j=m.
+ \end{cases}
+\end{equation}
+Here all $j$ are integers. For the first line, the binomial terms in \eqref{eq:unroll} vanish. For the middle line, induct on $k$: when $j<m-1$, the binomial term in \eqref{eq:rec} vanishes and the preceding set contributes $-f(j)$; when $j=m-1$, that preceding polynomial is zero at its maximum, while $\binom{m-1}{m-1}=1$. The last line is Lemma~\ref{lem:rec}.
+
+\section{A positive symmetric transform}
+For a polynomial $f$ and an integer $N\ge\deg f$, define
+\begin{equation}\label{eq:Q}
+ Q_N[f](t)=\sum_{j=0}^N(-1)^{N-j}\binom Nj f(j)t^{N-j}.
+\end{equation}
+For an admissible $T$ with auxiliary maximum $a$, define
+\[
+ D_T(t)=Q_a[p_T](t),\qquad D_\varnothing(t)=1.
+\]
+Newton interpolation and the binomial theorem give
+\begin{equation}\label{eq:newton}
+ Q_N[f](t)=\sum_{j=0}^{\deg f}\binom Nj(\Delta^j f)(0)(1-t)^{N-j}.
+\end{equation}
+Indeed, substitute $f(r)=\sum_j\binom rj\Delta^j f(0)$ in \eqref{eq:Q}, use $\binom Nr\binom rj=\binom Nj\binom{N-j}{r-j}$, and sum the inner binomial expansion.
+
+\begin{lemma}[Transform recurrence and positivity]\label{lem:D}
+For every admissible $T$, $D_T(t)=D_T(1-t)$ and $D_T(t)>0$ for $0<t<1$. For nonempty $T$, also $D_T(0)=D_T(1)=0$.
+
+More precisely, if $S=T\cup\{a+k\}$, $m=a+k$, and $k\ge2$, then
+\begin{equation}\label{eq:Drec}
+ D_S(t)=f(m)-Q_m[f](t)-Q_m[f](1-t),\qquad f=p_T,
+\end{equation}
+and, for $0\le t\le1$,
+\begin{equation}\label{eq:convex}
+ D_S(t)=\frac{m!}{a!(k-1)!}
+ \left(\int_0^1u^{k-1}D_T(u)\,du
+       -\int_0^1|u-t|^{k-1}D_T(u)\,du\right).
+\end{equation}
+\end{lemma}
+\begin{proof}
+Induct on $|S|$, starting with $D_\varnothing=1$. Assume $D_T$ is symmetric. Comparing \eqref{eq:Q} with \eqref{eq:newton} for $N=a$, using symmetry, yields
+\[
+ (\Delta^j f)(0)=(-1)^{a-j}f(j)\qquad(0\le j\le a).
+\]
+The displayed identity also appears in \cite[Theorem~4.3]{BFT}; the argument here derives it within the induction.
+Define $L(t)=\sum_{j=0}^a(-1)^{m-j}\binom mj f(j)t^{m-j}$. Equation~\eqref{eq:newton} now gives $Q_m[f](1-t)=(-1)^kL(t)$. The three ranges in \eqref{eq:values} imply
+\[
+ D_S(t)=f(m)-Q_m[f](t)-(-1)^kL(t),
+\]
+which proves \eqref{eq:Drec} and symmetry of $D_S$.
+
+Direct differentiation of \eqref{eq:Q} gives $(Q_N[f])'=-NQ_{N-1}[f]$. Also $Q_N[f](1)=\Delta^Nf(0)=0$ for $N>\deg f$. Since $\deg f\le a$ (including the empty-set case), integrating this identity repeatedly gives
+\begin{equation}\label{eq:extend}
+ Q_m[f](t)=\frac{m!}{a!(k-1)!}\int_t^1(u-t)^{k-1}D_T(u)\,du.
+\end{equation}
+The boundary conditions used at each step hold because each index is greater than $a$. In particular, $f(m)=Q_m[f](0)$. Replacing $u$ by $1-u$ in the expression for $Q_m[f](1-t)$ and using symmetry of $D_T$ proves \eqref{eq:convex}.
+
+Put $r=k-1\ge1$. For $0<u,t<1$,
+\[
+ |u-t|^r<(1-t)u^r+t(1-u)^r.
+\]
+For $r>1$ this is strict convexity of $|z|^r$ applied to the distinct points $u$ and $u-1$. For $r=1$ it is the strict triangle inequality for two nonzero real numbers of opposite signs. Integrate against $D_T(u)>0$. Symmetry makes the integrals of $u^rD_T(u)$ and $(1-u)^rD_T(u)$ equal. Thus \eqref{eq:convex} is strictly positive for $0<t<1$. At either endpoint it is zero. This closes the induction.
+\end{proof}
+
+\begin{lemma}[Moment representation]\label{lem:moment}
+Let $T$ have auxiliary maximum $a$. For every real $x>a$,
+\begin{equation}\label{eq:moment}
+ p_T(x)=\frac{\prod_{j=0}^{a}(x-j)}{a!}
+              \int_0^1 t^{x-a-1}D_T(t)\,dt.
+\end{equation}
+\end{lemma}
+\begin{proof}
+Since $\deg p_T\le a$, partial fractions give
+\[
+ \frac{a!p_T(x)}{\prod_{j=0}^{a}(x-j)}
+ =\sum_{j=0}^a\frac{(-1)^{a-j}\binom aj p_T(j)}{x-j}.
+\]
+Both sides have the same residues at every possible pole and tend to zero at infinity, proving the identity. For $x>a$, integrate each term of the finite sum defining $D_T$: $\int_0^1t^{x-j-1}dt=1/(x-j)$. All integrals converge absolutely. This proves \eqref{eq:moment}, including $T=\varnothing$, where it reads $1=x\int_0^1t^{x-1}dt$.
+\end{proof}
+
+\section{The scalar sign inequality}
+For real $r$ and $0<t<1$, let $E_r(t)=t^r+(1-t)^r$. Generalized binomial coefficients mean $\binom vj=v(v-1)\cdots(v-j+1)/j!$, with $\binom v0=1$.
+
+\begin{lemma}[Symmetrized binomial kernel]\label{lem:kernel}
+For every integer $k\ge2$, every $y>0$, and every $0<t<1$, define
+\begin{equation}\label{eq:A}
+ A_k(y,t)=\frac{(-1)^k}{2}\sum_{j=0}^{k-2}(-1)^j\binom{y-1}{j}E_j(t)
+                  -\ind_{k\text{ even}}E_{y-1}(t).
+\end{equation}
+Then
+\begin{equation}\label{eq:signA}
+ \sgn A_k(y,t)=\sgn(y-k),\qquad
+ \frac{\partial A_k}{\partial y}(k,t)>0.
+\end{equation}
+\end{lemma}
+\begin{proof}
+Fix $t\in(0,1)$ and put $v=y-1$, $n=k-1\ge1$. Taylor's theorem with integral remainder, applied to $(1-t)^v$, gives
+\begin{equation}\label{eq:TaylorA}
+ 2A_k(y,t)=\frac{\fall{v}{n}}{(n-1)!}J_{n,v}(t)-E_v(t),
+\end{equation}
+where
+\[
+ J_{n,v}(t)=\int_0^t(t-u)^{n-1}(1-u)^{v-n}\,du
+ +\int_0^{1-t}(1-t-u)^{n-1}(1-u)^{v-n}\,du>0.
+\]
+These integrals are finite for every real $v$: their integration ranges stay away from $u=1$. To check the sign in \eqref{eq:TaylorA}, the remainder in the Taylor expansion of $(1-t)^v$ is $(-1)^n\fall vn/(n-1)!$ times the first integral; symmetrizing and substituting in \eqref{eq:A} leaves exactly \eqref{eq:TaylorA}.
+
+\medskip\noindent\textbf{First range: $y>k-1$.}
+Write $s=y-k=v-n>-1$ and let
+\[
+ B(n,s+1)=\int_0^1r^{n-1}(1-r)^s\,dr>0.
+\]
+Repeated integration by parts gives $\fall vn/(n-1)!=1/B(n,s+1)$. Thus
+\begin{equation}\label{eq:paired}
+ 2B(n,s+1)A_k(y,t)
+ =\int_0^1\Phi_{n,t}(u)\bigl(u^s-(1-u)^s\bigr)\,du,
+\end{equation}
+where $\Phi_{n,t}(u)=\sgn(u-t)|u-t|^{n-1}$, with its value at $u=t$ irrelevant. To verify this identity, change $u$ to $1-u$ in the second integral of $J$, and use
+\[
+ B(n,s+1)t^{n+s}=\int_0^t(t-u)^{n-1}u^s\,du
+\]
+and its reflected counterpart for $(1-t)^{n+s}$.
+
+The right side of \eqref{eq:paired} equals
+\begin{equation}\label{eq:pairhalf}
+ \int_{1/2}^1\bigl(\Phi_{n,t}(u)-\Phi_{n,t}(1-u)\bigr)
+                    \bigl(u^s-(1-u)^s\bigr)\,du.
+\end{equation}
+The first factor is nonnegative because $\Phi_{n,t}$ is nondecreasing. It is strictly positive for every $u>1/2$ when $n>1$; when $n=1$, it is strictly positive on $u>\max(t,1-t)$, an interval of positive length. The second factor has the strict sign of $s$ for $u>1/2$, unless $s=0$, when it vanishes. All integrals are absolutely convergent since $s>-1$. Hence $A_k(y,t)$ has the sign of $s=y-k$ throughout this range, and $A_k(k,t)=0$.
+
+\medskip\noindent\textbf{Second range: $0<y<1$.}
+Now $-1<v<0$. If $k$ is odd, each $(-1)^j\binom vj$ is positive, so \eqref{eq:A} is strictly negative. If $k$ is even, $n$ is odd and $\fall vn<0$, so \eqref{eq:TaylorA} is strictly negative.
+
+\medskip\noindent\textbf{Third range: $1\le y\le k-1$.}
+If $y$ is an integer, $v\in\{0,\ldots,n-1\}$, so \eqref{eq:TaylorA} gives $2A_k=-E_v<0$. Otherwise set $r=\lfloor y\rfloor\ge1$, so $v\in(r-1,r)$ and $n>r$. If $\binom vn<0$, negativity again follows directly from \eqref{eq:TaylorA}.
+
+It remains to treat $\binom vn>0$. Its sign is $(-1)^{n-r}$, so $k-(r+1)$ is even. The starting index $h_0=r+1\ge2$ satisfies $h_0-1<y<h_0$, and the first range already proves $A_{h_0}(y,t)<0$. For any integer $h\ge2$, direct subtraction in \eqref{eq:A} gives
+\begin{equation}\label{eq:step}
+ A_{h+2}(y,t)-A_h(y,t)
+ =\frac{\binom{y-1}{h-1}}{2h}
+          \bigl((y-h)E_h(t)-hE_{h-1}(t)\bigr).
+\end{equation}
+Along $h=h_0,h_0+2,\ldots,k-2$, the binomial coefficient is positive: its number of negative factors is even. Also $y<h$ and both $E$ terms are positive. Each increment is therefore strictly negative. Hence $A_k(y,t)<0$. These ranges exhaust $y>0$ and prove the sign assertion.
+
+Finally differentiate \eqref{eq:paired} at $s=0$, where $A_k(k,t)=0$ and $B(n,1)=1/n$:
+\begin{equation}\label{eq:Aderivative}
+ \frac{\partial A_k}{\partial y}(k,t)
+   =\frac n2\int_0^1\Phi_{n,t}(u)\log\frac{u}{1-u}\,du>0.
+\end{equation}
+Differentiation is justified, for example on $|s|\le1/2$, by an integrable bound involving $u^{-1/2}|\log u|+(1-u)^{-1/2}|\log(1-u)|$. Pairing the integral as in \eqref{eq:pairhalf} makes its strict positivity immediate, including $n=1$.
+\end{proof}
+
+\section{Proof of the sign theorem}
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+Let $x=a+y$ with $y>0$, and set
+\[
+ F_a(x)=\frac{\prod_{r=0}^{a}(x-r)}{a!}>0.
+\]
+Use Lemma~\ref{lem:moment} for $f(x)$ and for each $f(a+i)$ in \eqref{eq:unroll}. For $i=j+1$ the factorials cancel to give
+\[
+ f(a+j+1)\binom{x}{a+j+1}
+ =F_a(x)\binom{y-1}{j}\int_0^1t^jD_T(t)\,dt.
+\]
+Thus, using symmetry of $D_T$ to average each term with its reflection,
+\begin{equation}\label{eq:mainintegral}
+ p_S(a+y)=F_a(a+y)\int_0^1D_T(t)A_k(y,t)\,dt.
+\end{equation}
+All terms are integrable: the only nonpolynomial powers have exponent $y-1>-1$, and $D_T$ is bounded on $[0,1]$.
+
+Lemma~\ref{lem:D} gives $D_T(t)>0$ for $0<t<1$, and Lemma~\ref{lem:kernel} says $A_k(y,t)$ has the strict sign of $y-k$, uniformly on that interval, except when $y=k$, where it is identically zero. Since the prefactor is positive, \eqref{eq:mainintegral} proves the claimed sign theorem and the unique-root assertion.
+
+For simplicity of the root, differentiate \eqref{eq:mainintegral} at $y=k$. The derivative of the prefactor multiplies an integral which is zero. The remaining term is
+\[
+ p'_S(m)=F_a(m)\int_0^1D_T(t)\frac{\partial A_k}{\partial y}(k,t)\,dt>0.
+\]
+To justify differentiation, take $|y-k|<1/2$; since $k\ge2$, the derivatives of the power terms are bounded by integrable functions of the form $t^{k-3/2}|\log t|$ and its reflection. The finite binomial sum causes no difficulty. Positivity follows pointwise from the two lemmas.
+\end{proof}
+
+The following consequence also follows from Li's positive rising-binomial
+expansion \cite[Eq.~(2), Theorem~1.1]{Li}, after cancellation of the rising
+factors and finite differentiation. We include the integral proof for completeness.
+
+\begin{corollary}[A further consequence of the transform]
+For nonempty admissible $S$ with maximum $m$, cancel the factor $x-m$ in
+\[
+ R_S(x)=\frac{p_S(x)}{\prod_{j=0}^{m}(x-j)}.
+\]
+Then $R_S$ extends across $x=m$ and is strictly completely monotone on $(m-1,\infty)$:
+\[
+ (-1)^rR_S^{(r)}(x)>0\qquad(r=0,1,2,\ldots,\ x>m-1).
+\]
+\end{corollary}
+\begin{proof}
+Lemma~\ref{lem:moment} initially gives
+\[
+ R_S(x)=\frac1{m!}\int_0^1t^{x-m-1}D_S(t)\,dt\qquad(x>m).
+\]
+Because $D_S$ is a polynomial with $D_S(0)=0$, it is $O(t)$ near zero. The integral and all its $x$-derivatives converge for $x>m-1$. The same finite partial-fraction computation extends the identity to this interval with the singularity at $m$ removed. Differentiating under the integral inserts $(\log t)^r$; $D_S>0$ in the interior proves the strict inequalities.
+\end{proof}
+
+\section{Finite checks and reproducibility}
+The proof is uniform and does not use the following computations. The supplied program \texttt{verify\_peak.py} uses integer and rational arithmetic, and SymPy's exact real-root counting. It does not use approximate roots or numerical quadrature.
+
+The archived computation records report Python 3.13.5 and SymPy 1.14.0 and checks of all 4,180 nonempty admissible sets with maximum at most 18, comprising 4,163 instances of Conjecture 6.6 and 17 singleton extensions. For every set it checked the transform recurrence and symmetry, the endpoint values, strict positivity at $1/2$, an exact count of transform roots in $(0,1)$ after endpoint factors were removed, a positive exact derivative at the largest peak, and an exact count excluding further real roots above $a$ after integer roots were stripped. Those records report no failures. Exact moment, adjoining-kernel, and sign checks at specified rational arguments are recorded as totaling 27,663.
+
+The archived kernel file reports checks of the scalar kernel and its two-step identity at 4,784 exact points. Here $2\le k\le24$, $y=p/2$ for $1\le p\le4k$, and
+\[
+ t\in\left\{\frac9{25},\frac{25}{169},\frac{49}{625},\frac{400}{841}\right\}.
+\]
+Each $t$ and $1-t$ is a square of a positive rational, so the half-integer powers are rational, not floating-point approximations. The records report 92 zero cases with $y=k$ and the asserted strict sign in every other case. They also include direct enumeration of all 46,233 permutations of lengths 1 through 8 for the peak-count normalization.
+
+The complete maximum-18 scan and all 4,784 kernel records were not mathematically
+recomputed for this edition. File hashes and record counts were checked; those
+integrity checks do not certify every historical execution. A smaller recorded
+reproduction using Python 3.8.3 and SymPy 1.6.1 ran the accompanying verifier
+with maximum peak 10 and kernel maximum 10: 88 sets, 582 moment/sign points,
+and 864 kernel points, with process exit code zero. A separate standard-library
+coefficient implementation checked 88 sets, 835 transform-identity points,
+880 rational moment/sign points, 432 kernel points, and 46,233 permutations,
+also with exit code zero. The overlapping 88 polynomial records and 864 kernel
+records matched the archived data. These execution ranges are documented in
+\texttt{REPRODUCIBILITY.md} and the distributed verification records. Packaging
+did not rerun either mathematical suite.
+
+\paragraph{Initial tests.}
+The smallest applicable set is $\{2,4\}$, with
+\[
+ p_{\{2,4\}}(x)=\frac{(x-4)(x-2)(x+3)}6.
+\]
+The illustrative even-gap set has
+\[
+ p_{\{2,6\}}(x)=\frac{(x-6)(x-2)(x+1)(3x^2-19x+40)}{120}.
+\]
+The quadratic discriminant is $-119$. These agree with the target. A terminal gap three reduces in the kernel to $A_3(y,t)=(y-3)/2$, consistent with the known gap-three factorization. Empty and singleton sets were handled only as auxiliary cases; no excluded case was silently substituted for the target.
+
+\paragraph{Scope of the argument.}
+All peak sets are finite and admissible, and every appended gap satisfies $k\ge2$. All uses of smaller peak polynomials have smaller maximum. The polynomial boundary value $p_S(m)=0$ was proved from the counting recurrence at $n=m$. Transform positivity was established independently of any real-root statement. The beta integral was used only when $s>-1$; the remaining parameter ranges were handled separately. The case $k=2$ was included via the nondecreasing step function $\Phi_{1,t}$ and its strict positivity on an interval of positive length. All moment integrals are in their stated convergence domains. No inference from positive integer evaluations to real positivity was made. The final integral covers every real $x>a$, exactly the interval required in Conjecture 6.6; the simplicity conclusion is an additional proved assertion. No complex-root bound or complete classification of all other real roots is claimed.
+
+\paragraph{Attribution and status.}
+The Li reference below is the publicly available version 3.0, dated
+18 September 2026, whose full text was consulted for this edition.
+Its coefficient theorem has the direct consequences noted above; it does not
+by itself supply the full-interval sign argument presented here. This bounded
+comparison does not establish global priority. The work was developed with
+AI assistance and has not undergone external expert peer review or
+proof-assistant certification.
+
+\section{Reproduction and data format}
+From the extracted result directory, run
+\begin{verbatim}
+python verify_peak.py --max 18 --kernel-max 24 --output rerun_data
+pdflatex -interaction=nonstopmode -halt-on-error proof.tex
+pdflatex -interaction=nonstopmode -halt-on-error proof.tex
+\end{verbatim}
+A smaller check uses \texttt{--max 10 --kernel-max 10}. The original-input archive audit is not part of this distribution or a prerequisite of the proof.
+
+The two exact-data gzip files store canonical JSON Lines. Coefficients are
+ascending except for the stated Newton basis, and rational entries use reduced
+numerator--denominator pairs. The full encoding conventions, endpoint handling,
+and separate limited and historical execution scopes are in
+\texttt{REPRODUCIBILITY.md}. The summaries contain the uncompressed stream
+hashes, and \texttt{SHA256SUMS.json} records the distributed file sizes and hashes.
+Third-party source PDFs are cited rather than redistributed.
+
+\begingroup\small
+\begin{thebibliography}{9}
+\bibitem{BFT} S. Billey, M. Fahrbach, A. Talmage,
+\emph{Coefficients and roots of peak polynomials}, Experimental Mathematics \textbf{25}(2) (2016), 165--175. arXiv:1410.8506v2 (30 May 2016). In the supplied 20-page PDF: Theorem 1.1, Corollary 3.1, Lemma 3.2, Theorem 3.15, Lemmas 4.2 and 4.4, Theorem 4.3, and Conjecture 6.6. DOI: \href{https://doi.org/10.1080/10586458.2015.1051193}{10.1080/10586458.2015.1051193}.
+\bibitem{DHIO} A. Diaz-Lopez, P. E. Harris, E. Insko, M. Omar,
+\emph{A proof of the peak polynomial positivity conjecture}, arXiv:1605.01708 (2016); Journal of Combinatorial Theory, Series A \textbf{149} (2017), 21--29. Theorem 1.2 establishes forward-difference positivity. It is not invoked in the proof above.
+\bibitem{Li} A. C. Li,
+\emph{Reflected Newton Transforms and Concavity of Peak-Polynomial Coefficients},
+working paper, version 3.0, 18 September 2026.
+Equation (2), Theorem 1.1, Proposition 3.1, and the related coefficient results.
+Zenodo DOI: \href{https://doi.org/10.5281/zenodo.22832569}{10.5281/zenodo.22832569}.
+\end{thebibliography}
+\endgroup
+\end{document}
